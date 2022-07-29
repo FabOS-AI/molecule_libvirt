@@ -20,6 +20,9 @@
   failed_when: false
   retries: 15
 
+- debug:
+    var: async_pol_results
+
 - set_fact:
     rc_list: "{{ async_poll_results.results | map(attribute='rc') | list }}"
 
