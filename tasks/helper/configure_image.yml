@@ -21,11 +21,11 @@
   retries: 15
 
 - debug:
-    var: async_pol_results
+    var: async_poll_results
 
 - set_fact:
     rc_list: "{{ async_poll_results.results | map(attribute='rc') | list }}"
-  when: async_poll_results
+  when: async_poll_results.results
 
 - debug:
     var: rc_list
