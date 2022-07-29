@@ -25,7 +25,7 @@
 
 - set_fact:
     rc_list: "{{ async_poll_results.results | map(attribute='rc') | list }}"
-  when: async_poll_results.results
+  when: async_poll_results.results[0].rc
 
 - debug:
     var: rc_list
