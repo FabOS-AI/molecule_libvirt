@@ -11,7 +11,7 @@
   register: async_config_image
 
 - name: Check configuration status of images
-#  when: item.changed == true
+  when: item.changed == true
   async_status:
     jid: "{{ item.ansible_job_id }}"
   loop: "{{ async_config_image.results }}"
@@ -25,6 +25,7 @@
 
 - set_fact:
     rc_list: "{{ async_poll_results.results | map(attribute='rc') | list }}"
+  when: item.changed == true
 
 - debug:
     var: rc_list
